@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> EVENTOS </title>
+		<meta charset="utf-8">
+		<style>
+			#div1 {
+				width: 400px;
+				height: 300px;
+				border: 1px solid;
+			}
+		</style>
+
+		<script>
+			
+            /* EVENTOS
+			 *
+			 * 
+			 * 
+			 */
+
+            function msg() {
+                alert("Olá!");
+            }
+
+            function cor1(obj, cor) {
+                obj.style.backgroundColor = cor;
+            }
+
+            function addEventos() {
+                /**
+                 * O método addEventListener(1, 2) => 
+                 * 1 - Nome do evento que quero interceptar.
+                 * 2 - função que será chamada, apos o evento(1) for acionado.
+                 */
+                document.getElementById("div1").addEventListener("click", msg);
+
+                // Funções anonimas.
+                document.getElementById("div1").addEventListener("mouseover", function(event){
+                    cor1(document.getElementById("div1"), "red");
+                });
+                document.getElementById("div1").addEventListener("mouseout", function(event){
+                    cor1(document.getElementById("div1"), "white");
+                });
+            }
+
+            // Para deixar os códigos JS em apenas um lugar.
+            window.addEventListener("load", addEventos);
+
+		</script>
+
+	</head>
+	<body>
+
+		<div id="div1"  >
+			
+        </div>
+
+	</body>
+</html>

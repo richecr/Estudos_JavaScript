@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> EVENTOS </title>
+		<meta charset="utf-8">
+		<style>
+			#div1 {
+				width: 400px;
+				height: 300px;
+				border: 1px solid;
+			}
+		</style>
+
+		<script>
+            
+            var px = 0;
+            var py = 0;
+            /* EVENTOS DE BOTÕES.
+			 * keydown => 87 = w, 65 = a, 83 = s, 68 =d.
+             * 
+             *      DESAFIO
+             * 
+             * A = Para esquerda.
+             * D = Para direita.
+             * W = Para frente.
+             * S = Para trás.
+             * Enter = Para de se mover.
+             * Clicar na div = Libera para se mover.
+             * 
+             * Por padrão movimento fica desligado.
+			 */
+            
+            function move() {
+                var obj = document.getElementById("div1");
+                var tecla = event.keyCode;
+                obj.style.position = "absolute";
+                if (tecla == 65) {
+                    px -= 20;
+                    obj.style.left = px + "px";
+                } else if (tecla == 68) {
+                    px += 20;
+                    obj.style.left = px + "px";
+                } else if (tecla == 87) {
+                    py -= 20;
+                    obj.style.top = py + "px";
+                } else if (tecla == 83) {
+                    py += 20;
+                    obj.style.top = py + "px";
+                } else if (tecla == 13) {
+                    // Ao pressionar Enter meu evento de keydown será removido.
+                    obj.style.backgroundColor = "white";
+                    document.removeEventListener("keydown", move);
+                }
+            }
+            //document.addEventListener("keydown", move);
+
+            function addEventos() {
+                document.getElementById("div1").addEventListener("click", ativaMove);
+            }
+
+            function ativaMove() {
+                document.getElementById("div1").style.backgroundColor = "red";
+                document.addEventListener("keydown", move);
+            }
+            window.addEventListener("load", addEventos);
+
+		</script>
+
+	</head>
+	<body>
+
+		<div id="div1"  >
+			
+        </div>
+
+	</body>
+</html>
