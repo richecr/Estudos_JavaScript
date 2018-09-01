@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> Olá JavaScript! </title>
+		<meta charset="utf-8">
+
+		<script>
+			
+			function alerta(msg) {
+				alert(msg);
+			}
+			
+			function media(nums) {
+				var tamanho = nums.length;
+				var soma = 0;
+				for (var i = 0; i < nums.length; i++) {
+					soma += nums[i];
+				}
+				return Math.round(soma / tamanho);
+			}
+			var numeros = new Array(10, 20, 30);
+			alert(media(numeros));
+
+		</script>
+
+	</head>
+	<body>
+
+
+	</body>
+</html>

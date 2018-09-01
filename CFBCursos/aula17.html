@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> EVENTOS </title>
+		<meta charset="utf-8">
+		<style>
+			#div1 {
+				width: 400px;
+				height: 300px;
+				border: 1px solid;
+			}
+		</style>
+
+		<script>
+			
+			/* EVENTOS
+			 * O método onmouseover é quando o mouse esta em cima do objeto.
+			 * O método onmouseout é quando o mouse não esta em cima do objeto.
+			 *
+			 * 
+			 * 
+			 */
+
+			function mudarCor (obj, cor) {
+				obj.style.backgroundColor = cor;
+			}
+
+			function mudarPos(obj) {
+				obj.style.position = "absolute";
+				obj.style.left = Math.random()*500+"px"; // de 0 a 500;
+				obj.style.top= Math.random()*500+"px"; // de 0 a 500;
+			}
+
+			function ola() {
+				var data = new Date();
+				var horas = data.getHours();
+				var res = "";
+				if (horas < 12) {
+					res = "Bom dia!";
+				} else  if (horas >= 12 && horas < 18) {
+					res = "Boa tarde!";
+				} else {
+					res = "Boa Noite!";
+				}
+				return res;
+			}
+
+		</script>
+
+	</head>
+	<body onload="alert(ola())">
+
+
+		<div id="div1" onmouseover="mudarCor(this, 'red')" onmouseout="mudarCor(this, 'white')" >
+			
+		</div>
+		<br>
+
+		<button onclick="alert('Clicou no botão')" onmouseover="mudarPos(this)">Clique em mim</button>
+
+
+
+	</body>
+</html>
