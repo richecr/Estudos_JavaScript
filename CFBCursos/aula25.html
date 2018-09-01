@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> SLIDER </title>
+		<meta charset="utf-8">
+		<style>
+			#div {
+                border: 1px solid #000;
+                width: 1000px;
+                height: 300px;
+            }
+        </style>
+        
+        <script>
+            
+            var imgs = [];
+            var slider;
+            var imgAtual;
+            var maxImg;
+
+            function preCarregamento() {
+                var foto = ["a", "b", "c", "d"];
+                for (let i = 0; i < 4; i++) {
+                    imgs[i] = new Image();
+                    imgs[i].src = "img/"+foto[i]+".jpg";
+                }
+            }
+
+            function carregarImg(img) {
+                slider.style.backgroundImage = "url("+imgs[img].src+")";
+            }
+
+            function inicia() {
+                preCarregamento();
+                imgAtual = 0;
+                maxImg = imgs.length-1;
+                slider = document.getElementById("div");
+                carregarImg(imgAtual);
+                setInterval(troca, 3000);
+            }
+
+            function troca() {
+                imgAtual++;
+                if (imgAtual > maxImg) {
+                    imgAtual = 0;
+                }
+                carregarImg(imgAtual);
+            }
+
+            window.addEventListener("load", inicia);
+        </script>
+
+	</head>
+	<body>
+
+        <div id="div" ></div>
+
+	</body>
+</html>
