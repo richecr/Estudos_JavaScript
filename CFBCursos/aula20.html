@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> EVENTOS </title>
+		<meta charset="utf-8">
+		<style>
+			#div1 {
+				width: 400px;
+				height: 300px;
+				border: 1px solid;
+			}
+		</style>
+
+		<script>
+			
+			var tmp;
+
+            /**
+             * Métodos: setTimeout e setInterval.
+			 * setTimeout(1, 2) => 1 - A função, 2 - tempo. Só vai chamar uma vez;
+             * setInterval(1, 2) => 1 - A função, 2 - tempo para ficar chamando a função.
+             */
+			function mudarCor() {
+				var obj = document.getElementById("div1");
+				var r = Math.floor(Math.random()*255);
+				var g = Math.floor(Math.random()*255);
+				var b = Math.floor(Math.random()*255);
+				obj.style.backgroundColor = "rgb("+r+","+g+","+b+")";
+			}
+
+			//window.addEventListener("load", mudarCor);
+
+			function iniciar() {
+				tmp = setInterval(mudarCor, 2000);
+			}
+
+			function parar() {
+				clearInterval(tmp);
+			}
+			
+			function addEventos() {
+				document.getElementById("btn1").addEventListener("click", iniciar);
+				document.getElementById("btn2").addEventListener("click", parar);
+			}
+
+			window.addEventListener("load", addEventos);
+			
+		</script>
+
+	</head>
+	<body>
+
+		<div id="div1"></div>
+		<button id="btn1">Iniciar</button>
+        <button id="btn2">Parar</button>
+
+	</body>
+</html>
