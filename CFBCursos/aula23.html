@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> Eventos </title>
+		<meta charset="utf-8">
+		<style>
+			#div {
+                border: 1px solid;
+                height: 50px;
+                width: 50px;
+                position: absolute;
+                color: aqua;
+                background-color: black;
+                font-size: 50px;
+            }
+            #btn1 {
+                position: absolute;
+                left: 80px;
+                top: 80px;
+            }
+            #btn2 {
+                position: absolute;
+                left: 140px;
+                top: 80px;
+            }
+            #btn3 {
+                position: absolute;
+                left: 200px;
+                top: 80px;
+            }
+		</style>
+
+		<script>
+            
+            var jog;
+            var vel;
+            var dx;
+            var dy;
+            var px;
+            var py;
+            var anima;
+            var parado;
+
+            function inicia() {
+                dx = 1;
+                dy = 0;
+                px = 0;
+                py = 0;
+                vel = 1;
+                parado = true;
+                jog = document.getElementById("div");
+                document.getElementById("btn1").addEventListener("click", movimenta);
+                document.getElementById("btn2").addEventListener("click", parar);
+                document.getElementById("btn3").addEventListener("click", aumentaVelocidade);
+                if (!parado) {
+                    game();
+                }
+            }
+
+            function movimenta() {
+                if (parado){
+                    parado = false;
+                    game();
+                }
+            }
+
+            function parar() {
+                parado = true;
+                cancelAnimationFrame(anime);
+            }
+
+            function aumentaVelocidade() {
+                vel++; 
+            }
+
+            function game() {
+                px += dx*vel;
+                //py += dy*vel;
+                jog.style.left = px+"px";
+                //jog.style.top = py+"px";
+                if (px > 800) {
+                    dx = -1;
+                }
+                if (px <= 0) {
+                    dx = 1;
+                }
+                anime = requestAnimationFrame(game);
+            }
+
+            window.addEventListener("load", inicia);
+		</script>
+
+	</head>
+	<body>
+
+        <div id="div" ></div>
+        <br>
+        <button id="btn1">Iniciar</button>
+        <button id="btn2">Parar</button>
+        <button id="btn3">Aumentar Velocidade</button>
+
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> RECURSÃO </title>
+		<meta charset="utf-8">
+		<style>
+			#div {
+                border: 1px solid #000;
+                position: absolute;
+                left: 47%;
+                top: 40%;
+                height: 100px;
+                width: 100px;
+                background-color: #f00;
+            }
+		</style>
+
+	</head>
+	<body>
+
+        <div id="div" ></div>
+
+        <script>
+            var obj = document.getElementById("div");
+            var ang = 0;
+            var anima;
+            function gira() {
+                obj.style.transform = "rotate("+ang+"deg)";
+                ang++;
+                if (ang > 360) {
+                    ang = 0;
+                }
+                anima = requestAnimationFrame(gira);
+            }
+            gira();
+        </script>
+        
+
+	</body>
+</html>
