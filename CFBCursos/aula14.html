@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> Olá JavaScript! </title>
+		<meta charset="utf-8">
+		<style>
+			.div {
+				width: 100vw;
+    	        height: 100vh;
+	            background: grey;
+         		display: flex;
+		        flex-direction: row;
+ 		        justify-content: center;
+		        align-items: center
+				justify-content: center;
+         		align-items: center
+			}
+			.box {
+		        width: 250px;
+        		height: 150px;
+           		background: grey;
+     		}
+     		body {
+        		margin: 0px;
+			}
+			label {
+				font-size: 30px;
+				font-family: "Comic Sans MS";
+				font-style: oblique;
+				display: block;
+			}
+			input {
+				background: white;
+				display: block;
+			}
+			input[type=submit], label {
+				margin-top: 40px;
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<div class="div" id="div">
+			<div class="box">
+				<form name="curso01" id="curso01" action="#" method="pos">
+					<label>E-mail</label>
+					<input type="email" name="Login" id="teste" value="Digite seu e-mail...">
+					<label>Senha</label>
+					<input type="password" name="senha" value="123">
+					<input type="submit" name="btnEnviar" value="Entrar" action="entra()">
+				</form>
+			</div>
+		</div>
+
+		<script>
+
+			/*
+			var fm = document.forms;
+			var fm = document.forms.namedItem("curso01").innerHTML;
+			var fm = document.forms.namedItem("curso01").elements[1].value; // é o 1º input.
+			var fm = document.forms[0];
+			var el = fm.elements;
+
+			el[0].style.backgroundColor = "red";
+
+			*/
+			var div = document.getElementById("div");
+
+			function entra () {
+				document.write("OKOK");
+			}
+
+			
+		</script>
+
+	</body>
+</html>

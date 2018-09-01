@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> Olá JavaScript! </title>
+		<meta charset="utf-8">
+
+		<script>
+
+			var num = 10;
+
+			try{
+				var num1 = prompt("Digite o numero: ");
+				if (num1 == 0) {
+					throw new Error("Divisão por zero não existe!");
+				}
+				document.write(num / num1);
+			} catch (e) {
+				document.write("ERRO, olhe o console(F12)!");
+				console.log("Message de erro: " + e.message);
+			}
+
+		</script>
+
+	</head>
+	<body>
+
+
+
+	</body>
+</html>

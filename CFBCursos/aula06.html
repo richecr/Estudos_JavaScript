@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> Olá JavaScript! </title>
+		<meta charset="utf-8">
+
+		<script>
+
+			var cores = [];
+
+			// Adicionando no array.
+			cores.push("azul");
+			cores.push("vermelho");
+			cores[2] = "branco";
+			cores.push("verde");
+
+			document.write(cores[3]+"<br>");
+
+			var nomes = [];
+
+			nomes.push("Rick");
+			nomes.push("Elton");
+			// Insere no inicio.
+			nomes.unshift("Rick Elton");
+
+			document.write(nomes[0] + "<br>"); // Rick Elton
+
+			nomes.pop();
+			document.write(nomes[2] + "<br>"); // nao existe mais.
+
+			// Remove no inicio.
+			nomes.shift();
+			document.write(nomes[0] + "<br>"); // Rick
+
+
+		</script>
+
+	</head>
+	<body>
+
+
+
+	</body>
+</html>

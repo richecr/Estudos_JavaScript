@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> Olá JavaScript! </title>
+		<meta charset="utf-8">
+
+		<script>
+
+			var cores = [], cores1 = [];
+
+			// Adicionando no array.
+			cores.push("azul");
+			cores.push("vermelho");
+			cores.push("verde");
+			cores.push("branco");
+
+			cores1.push("preto");
+			cores1.push("amarelo");
+
+
+			// Verifica se o elemento existe no array.
+			document.write(cores.indexOf("verde")); // 2
+			document.write("<br>");
+			document.write(cores.indexOf("jdbqj")); // -1, pois o elemento nao existe no array.
+
+			// Ordenação.
+			document.write("<br>");
+			var nums = [5, 4, 3, 2, 1, 0, -1, -5, -6, 8];
+			nums.sort();
+			document.write(nums);
+
+			document.write("<br>");
+			nums.reverse();
+			document.write(nums);
+
+			// Concantenando...
+			document.write("<br>");
+			var cor = cores.concat(cores1);
+			document.write(cor);
+
+		</script>
+
+	</head>
+	<body>
+
+
+
+	</body>
+</html>

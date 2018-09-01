@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> Olá JavaScript! </title>
+		<meta charset="utf-8">
+
+		<script>
+
+			var cores = new Array();
+
+			var item1 = ["azul", 1],
+				item2 = ["vermelho", 2],
+				item3 = ["verde", 3],
+				item4 = ["branco", 4],
+				item5 = ["preto", 5];
+
+			cores.push(item1);
+			cores.push(item2);
+			cores.push(item3);
+			cores.push(item4);
+			cores.push(item5);
+			
+			/*for (var i = 0; i < cores.length; i++) {
+				for (var j = 0; j < 2; j++) {
+					document.write(cores[i][j] );
+					if (j != 1) {
+						document.write(" - ");
+					}
+				}
+				document.write("<br>");
+
+			}*/
+
+			// Usando while.
+			var i = 0;
+			document.write(cores.length);
+			while (i < cores.length) {
+				var j = 0;
+				while (j < 2) {
+					document.write(cores[i][j]);
+					if (j != 1) {
+						document.write(" - ");
+					}
+					j++;
+				}
+				i++;
+				document.write("<br>");
+			}
+
+
+		</script>
+
+	</head>
+	<body>
+
+
+
+	</body>
+</html>

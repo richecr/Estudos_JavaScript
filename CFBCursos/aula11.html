@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> Olá JavaScript! </title>
+		<meta charset="utf-8">
+
+	</head>
+	<body>
+
+		<p id="texto"> Curso de JS</p>
+		<input type="text" id="txt" value="digite...">
+
+		<div id="caixa"></div>
+
+		<script>
+			// Acessando objetos(tags) do HTML pelo Id.
+			var txt = document.getElementById("texto");
+			txt.style.color="blue";
+			txt.style.fontSize="50px";
+
+			var caixa = document.getElementById("caixa");
+			caixa.style.border = "2px solid #000";
+			caixa.style.width = "400px";
+			caixa.style.height = "200px";
+			caixa.style.background = "yellow";
+
+			var txt1 = document.getElementById("txt").value = "Curso de JS";
+			//var t = document.getElementById("texto").innerHTML = "Olá";
+			alert(txt1);
+
+
+		</script>
+
+	</body>
+</html>
