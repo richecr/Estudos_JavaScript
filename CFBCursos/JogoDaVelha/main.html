@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Jogo da Velha</title>
+    <meta charset="utf-8" />
+
+    <style>
+        #divjogo {
+            width: 160px;
+            height: 160px;
+            display: flex;
+            flex-wrap: wrap; /* Vai colocar do lado até chegar aos 160px, e então joga pra baixo. */
+            align-content: flex-start;
+        }
+        .posicaoJogo {
+            width: 50px;
+            height: 50px;
+            margin: 0px;
+            padding: 0px;
+            cursor: pointer;
+            display: flex; /* Controlar posicionanmento.*/
+        }
+        #p1 {
+            border-right: 2px solid #000;
+            border-bottom: 2px solid #000;
+        }
+        #p2 {
+            border-right: 2px solid #000;
+            border-bottom: 2px solid #000;
+        }
+        #p3 {
+            border-bottom: 2px solid #000;
+        }
+        #p4 {
+            border-top: 1px solid #000;;
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+        }
+        #p5 {
+            border-top: 1px solid #000;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+        #p6 {
+            border-top: 1px solid #000;
+            border-left: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+        #p7 {
+           
+            border-right: 1px solid #000;
+        }
+        #p8 {
+            border-top: 1px solid #000;
+            border-right: 1px solid #000;
+            border-left: 1px solid #000;
+        }
+        #p9 {
+            border-top: 1px solid #000;
+            border-left: 1px solid #000;
+        }
+            
+    </style>
+
+    <script>
+        
+
+
+    </script>
+
+</head>
+<body>
+
+    <div id="painel">
+        <div id="quemComeca"></div>
+        <button id="btnJogar" onclick="" >Jogar</button>
+    </div>
+    <div id="divjogo">
+        <div id="p1" class="posicaoJogo" onclick="" ></div>
+        <div id="p2" class="posicaoJogo" onclick=""></div>
+        <div id="p3" class="posicaoJogo" onclick=""></div>
+
+        <div id="p1" class="posicaoJogo" onclick=""></div>
+        <div id="p5" class="posicaoJogo" onclick=""></div>
+        <div id="p6" class="posicaoJogo" onclick=""></div>
+
+        <div id="p7" class="posicaoJogo" onclick=""></div>
+        <div id="p8" class="posicaoJogo" onclick=""></div>
+        <div id="p9" class="posicaoJogo" onclick=""></div>
+
+    </div>
+    
+</body>
+</html>

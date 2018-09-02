@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+
+		<title> StrIng </title>
+		<meta charset="utf-8">
+
+	</head>
+	<body>
+
+        <p id="txt"> Curso de JavaScript massa de javascript</p>
+
+        <script>
+            
+            var texto = document.getElementById("txt").innerHTML;
+            // document.write(texto.match("de"));
+            
+            // document.write(texto.match(/de/g)); // Retorna todos os "de" contidos na string.
+            
+            document.write(texto.match(/javascript/ig)) // i - sensitive. g - só para quando a string acabar.
+            
+            
+
+        </script>
+
+	</body>
+</html>
