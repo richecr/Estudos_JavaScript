@@ -75,9 +75,10 @@
         var quemJoga = 0; // 0- Jogador, 1- Cpu
         var verifica;
         var jogando = true;
-        var nivel = 1;
+        var nivel = 2;
         var jogadaCpu = 1;
         var quemComeca = 1;
+        var jogadas = 0;
 
         /**
          * Função que irá controlar a jogada da CPU.
@@ -93,9 +94,144 @@
                     } while (jogo[linha][coluna] != "");
                     jogo[linha][coluna] = "O";
                 } else if (nivel == 2) {
-                    // TODO ...
+                    // ATAQUE.
+                    // Linha 1.
+                    if ((jogo[0][0] == "O") && (jogo[0][1] == "O") && (jogo[0][2] == ""))
+                        jogo[0][2] = "O";
+                    else if ((jogo[0][0] == "O") && (jogo[0][2] == "O") && (jogo[0][1] == ""))
+                        jogo[0][1] = "O";
+                    else if ((jogo[0][1] == "O") && (jogo[0][2] == "O") && (jogo[0][0] == ""))
+                        jogo[0][0] = "O";
+                    // Linha 2.
+                    else if ((jogo[1][0] == "O") && (jogo[1][1] == "O") && (jogo[1][2] == ""))
+                        jogo[1][2] = "O";
+                    else if ((jogo[1][0] == "O") && (jogo[1][2] == "O") && (jogo[1][1] == ""))
+                        jogo[1][1] = "O";
+                    else if ((jogo[1][1] == "O") && (jogo[1][2] == "O") && (jogo[1][0] == ""))
+                        jogo[1][0] = "O";
+                    // Linha 3.
+                    else if ((jogo[2][0] == "O") && (jogo[2][1] == "O") && (jogo[2][2] == ""))
+                        jogo[2][2] = "O";
+                    else if ((jogo[2][0] == "O") && (jogo[2][2] == "O") && (jogo[2][1] == ""))
+                        jogo[2][1] = "O";
+                    else if ((jogo[2][1] == "O") && (jogo[2][2] == "O") && (jogo[2][0] == ""))
+                        jogo[2][0] = "O";
+                    
+                    // Coluna 1.
+                    else if ((jogo[0][0] == "O") && (jogo[1][0] == "O") && (jogo[2][0] == ""))
+                        jogo[2][0] = "O";
+                    else if ((jogo[0][0] == "O") && (jogo[2][0] == "O") && (jogo[1][0] == ""))
+                        jogo[1][0] = "O";
+                    else if ((jogo[1][0] == "O") && (jogo[2][0] == "O") && (jogo[0][0] == ""))
+                        jogo[0][0] = "O";
+                    // Coluna 2.
+                    else if ((jogo[0][1] == "O") && (jogo[1][1] == "O") && (jogo[2][1] == ""))
+                        jogo[2][1] = "O";
+                    else if ((jogo[0][1] == "O") && (jogo[2][1] == "O") && (jogo[1][1] == ""))
+                        jogo[1][1] = "O";
+                    else if ((jogo[1][1] == "O") && (jogo[2][1] == "O") && (jogo[0][1] == ""))
+                        jogo[0][1] = "O";
+                    // Coluna 3.
+                    else if ((jogo[0][2] == "O") && (jogo[1][2] == "O") && (jogo[2][2] == ""))
+                        jogo[2][2] = "O";
+                    else if ((jogo[0][2] == "O") && (jogo[2][2] == "O") && (jogo[1][2] == ""))
+                        jogo[1][2] = "O";
+                    else if ((jogo[1][2] == "O") && (jogo[2][2] == "O") && (jogo[0][2] == ""))
+                        jogo[0][2] = "O";
+                    // Diagonal principal.
+                    else if ((jogo[0][0] == "O") && (jogo[1][1] == "O") && (jogo[2][2] == ""))
+                        jogo[2][2] = "O";
+                    else if ((jogo[0][0] == "O") && (jogo[2][2] == "O") && (jogo[1][1] == ""))
+                        jogo[1][1] = "O";
+                    else if ((jogo[1][1] == "O") && (jogo[2][2] == "O") && (jogo[0][0] == ""))
+                        jogo[0][0] = "O";
+                    // Diagonal secundária.
+                    else if ((jogo[2][0] == "O") && (jogo[1][1] == "O") && (jogo[0][2] == ""))
+                        jogo[0][2] = "O";
+                    else if ((jogo[2][0] == "O") && (jogo[0][2] == "O") && (jogo[1][1] == ""))
+                        jogo[1][1] = "O";
+                    else if ((jogo[0][0] == "O") && (jogo[1][1] == "O") && (jogo[2][0] == ""))
+                        jogo[2][0] = "O";
+                    
+
+                    // DEFESA.
+                    // Linha 1.
+                    else if ((jogo[0][0] == "X") && (jogo[0][1] == "X") && (jogo[0][2] == ""))
+                        jogo[0][2] = "O";
+                    else if ((jogo[0][0] == "X") && (jogo[0][2] == "X") && (jogo[0][1] == ""))
+                        jogo[0][1] = "O";
+                    else if ((jogo[0][1] == "X") && (jogo[0][2] == "X") && (jogo[0][0] == ""))
+                        jogo[0][0] = "O";
+                    // Linha 2.
+                    else if ((jogo[1][0] == "X") && (jogo[1][1] == "X") && (jogo[1][2] == ""))
+                        jogo[1][2] = "O";
+                    else if ((jogo[1][0] == "X") && (jogo[1][2] == "X") && (jogo[1][1] == ""))
+                        jogo[1][1] = "O";
+                    else if ((jogo[1][1] == "X") && (jogo[1][2] == "X") && (jogo[1][0] == ""))
+                        jogo[1][0] = "O";
+                    // Linha 3.
+                    else if ((jogo[2][0] == "X") && (jogo[2][1] == "X") && (jogo[2][2] == ""))
+                        jogo[2][2] = "O";
+                    else if ((jogo[2][0] == "X") && (jogo[2][2] == "X") && (jogo[2][1] == ""))
+                        jogo[2][1] = "O";
+                    else if ((jogo[2][1] == "X") && (jogo[2][2] == "X") && (jogo[2][0] == ""))
+                        jogo[2][0] = "O";
+                    
+                    // Coluna 1.
+                    else if ((jogo[0][0] == "X") && (jogo[1][0] == "X") && (jogo[2][0] == ""))
+                        jogo[2][0] = "O";
+                    else if ((jogo[0][0] == "X") && (jogo[2][0] == "X") && (jogo[1][0] == ""))
+                        jogo[1][0] = "O";
+                    else if ((jogo[1][0] == "X") && (jogo[2][0] == "X") && (jogo[0][0] == ""))
+                        jogo[0][0] = "O";
+                    // Coluna 2.
+                    else if ((jogo[0][1] == "X") && (jogo[1][1] == "X") && (jogo[2][1] == ""))
+                        jogo[2][1] = "O";
+                    else if ((jogo[0][1] == "X") && (jogo[2][1] == "X") && (jogo[1][1] == ""))
+                        jogo[1][1] = "O";
+                    else if ((jogo[1][1] == "X") && (jogo[2][1] == "X") && (jogo[0][1] == ""))
+                        jogo[0][1] = "O";
+                    // Coluna 3.
+                    else if ((jogo[0][2] == "X") && (jogo[1][2] == "X") && (jogo[2][2] == ""))
+                        jogo[2][2] = "O";
+                    else if ((jogo[0][2] == "X") && (jogo[2][2] == "X") && (jogo[1][2] == ""))
+                        jogo[1][2] = "O";
+                    else if ((jogo[1][2] == "X") && (jogo[2][2] == "X") && (jogo[0][2] == ""))
+                        jogo[0][2] = "O";
+                    // Diagonal principal.
+                    else if ((jogo[0][0] == "X") && (jogo[1][1] == "X") && (jogo[2][2] == ""))
+                        jogo[2][2] = "O";
+                    else if ((jogo[0][0] == "X") && (jogo[2][2] == "X") && (jogo[1][1] == ""))
+                        jogo[1][1] = "O";
+                    else if ((jogo[1][1] == "X") && (jogo[2][2] == "X") && (jogo[0][0] == ""))
+                        jogo[0][0] = "O";
+                    // Diagonal secundária.
+                    else if ((jogo[2][0] == "X") && (jogo[1][1] == "X") && (jogo[0][2] == ""))
+                        jogo[0][2] = "O";
+                    else if ((jogo[2][0] == "X") && (jogo[0][2] == "X") && (jogo[1][1] == ""))
+                        jogo[1][1] = "O";
+                    else if ((jogo[0][2] == "X") && (jogo[1][1] == "X") && (jogo[2][0] == ""))
+                        jogo[2][0] = "O";
+                    else {
+                        if (jogadas < 8) {
+                            do {
+                                linha = Math.round(Math.random()*2); // 0 - 2;
+                                coluna = Math.round(Math.random()*2); // 0 - 2;
+                            } while (jogo[linha][coluna] != "");
+                            jogo[linha][coluna] = "O";
+                        } else {
+                            for (let linha = 0; linha < jogo.length; linha++) {
+                                for (let coluna = 0; coluna < jogo.length; coluna++) {
+                                    if (jogo[linha][coluna] == ""){
+                                        jogo[linha][coluna] = "O";
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
                 atualizaTabuleiro();
+                jogadas++;
                 verifca = verifcaVitoria();
                 if (verifca != "") {
                     alert("CPU Venceu !!!");
@@ -203,6 +339,7 @@
                         alert("Jogador Venceu !!!");
                         jogando = false;
                     }
+                    jogadas++;
                     cpuJoga();
                 }
             }
@@ -227,6 +364,7 @@
         
         function iniciar() {
             jogando = true;
+            jogadas = 0;
             jogadaCpu = 1;
             jogo = [["","",""],
                     ["","",""],
