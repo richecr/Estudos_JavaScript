@@ -98,7 +98,7 @@
                 atualizaTabuleiro();
                 verifca = verifcaVitoria();
                 if (verifca != "") {
-                    alert(verifica + " Venceu !!!");
+                    alert("CPU Venceu !!!");
                     jogando = false;
                 }
                 quemJoga = 0;
@@ -200,7 +200,7 @@
                     atualizaTabuleiro();
                     verifca = verifcaVitoria();
                     if (verifca != "") {
-                        alert(verifica + " Venceu !!!");
+                        alert("Jogador Venceu !!!");
                         jogando = false;
                     }
                     cpuJoga();
@@ -234,7 +234,17 @@
             tabuleiro = [[document.getElementById("p1"), document.getElementById("p2"), document.getElementById("p3")],
                          [document.getElementById("p4"), document.getElementById("p5"), document.getElementById("p6")],
                          [document.getElementById("p7"), document.getElementById("p8"), document.getElementById("p9")]];
-            
+            atualizaTabuleiro();
+            if (quemComeca == 1) {
+                quemComeca = 0;
+                quemJoga = quemComeca;
+                document.getElementById("quemComeca").innerHTML = "Quem começa: JOGADOR";
+            } else {
+                quemComeca = 1;
+                quemJoga = quemComeca;
+                document.getElementById("quemComeca").innerHTML = "Quem começa: CPU";
+                cpuJoga();
+            }
         }
         
         window.addEventListener("load", iniciar);
@@ -245,7 +255,7 @@
 
     <div id="painel">
         <div id="quemComeca"></div>
-        <button id="btnJogar" onclick="" >Jogar</button>
+        <button id="btnJogar" onclick="iniciar()" >Jogar</button>
     </div>
     <div id="divjogo">
         <div id="p1" class="posicaoJogo" onclick="jogar(1)" ></div>
