@@ -94,7 +94,7 @@
         function tecladoDown() {
             tecla = event.keyCode;
             if (tecla == 38) // CIMA
-                dirJy =- 1; // Pq é invertido.
+                dirJy = -1; // Pq é invertido.
             else if (tecla == 40) // BAIXO
                 dirJy =+ 1;
         }
@@ -174,12 +174,47 @@
             bola.style.left = posBolaX + "px";
         }
 
+        function controladorCpu() {
+            // posCpuY += velocidadeCpu * cpuY;
+            if (jogo) {
+                if ((posBolaX > (campoW/2)) && (bolaX > 0)) {
+                    if ((posBolaY+(bolaH/2)) > ((posCpuY + (barraH/2) + velocidadeCpu))) {
+                        // Mover para baixo.
+                        if ((posCpuY+barraH) <= campoH) {
+                            posCpuY += velocidadeJogador;
+                        }
+                    } else if ((posBolaY+(bolaH/2) < ((posCpuY + (barraH/2) - velocidadeCpu)))) {
+                        // Mover para cima.
+                        if (posCpuY >= 0) {
+                            posCpuY -= velocidadeJogador;
+                        }
+                    }
+                    cpu.style.top = posCpuY + "px";
+                } else {
+                    //Posicionar cpu no centro.
+                    // CASO 1: Esta na parte de cima.
+                    if ((posCpuY + (barraH/2)) < (campoH/2)) {
+                        posCpuY += velocidadeCpu;
+                    }
+                    // CASO 2: Esta na parte de baixo.
+                    else if ((posCpuY + (barraH/2)) > (campoH/2)) {
+                        posCpuY -= velocidadeCpu;
+                    }
+                    cpu.style.top = posCpuY + "px";
+                }
+            }
+        }
+
+        function fazCpuIrMeio() {
+            
+        }
+
         // Controlar o jogo, incluindo animações.
         function game() {
             if (jogo) {
                 controladorBola();
                 controladorJogador();
-                
+                controladorCpu();
             }
             frames = requestAnimationFrame(game);
         }
@@ -202,6 +237,7 @@
                 posBolaY = posBolaIniY;
                 posJogadorY = posJogIniY;
                 posCpuY = posCpuIniY;
+                cpuY = 0;
                 bola.style.top = posBolaY+"px";
                 bola.style.left = posBolaX+"px";
                 game();
