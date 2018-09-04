@@ -60,8 +60,8 @@
 
         // Para as posições dos elementos.
         var posBolaX, posBolaY;
-        var posJogadorX, posJogadorY;
-        var posCpuX, posCpuY;
+        var posJogadorX = 10, posJogadorY;
+        var posCpuX = 930, posCpuY;
 
         // Direção de acordo com o teclado.
         var dirJy; // Vai servir como multiplicador.
@@ -140,6 +140,36 @@
                 bolaX *= -1;
             }
 
+            // Limite superior e inferior.
+            if ((posBolaY >= 480) || (posBolaY <= 0)) {
+                bolaY *= -1;
+            }
+
+            // Controlando 'gols'.
+            if (posBolaX >= (campoW - bolaW)) {
+                velocidadeBola = 0;
+                posBolaX = posBolaIniX;
+                posBolaY = posBolaIniY;
+                posJogadorY = posJogIniY;
+                jogador.style.top = posJogadorY+"px";
+                posCpuY = posCpuY;
+                jogador.style.top = posCpuY+"px";
+                pontos++;
+                painelTxtPontos.value = pontos;
+                jogo = false;
+            } else if (posBolaX <= 0) {
+                velocidadeBola = 0;
+                posBolaX = posBolaIniX;
+                posBolaY = posBolaIniY;
+                posJogadorY = posJogIniY;
+                jogador.style.top = posJogadorY+"px";
+                posCpuY = posCpuY;
+                jogador.style.top = posCpuY+"px";
+                pontos--;
+                painelTxtPontos.value = pontos;
+                jogo = false;
+            }
+
             bola.style.top = posBolaY + "px";
             bola.style.left = posBolaX + "px";
         }
@@ -156,6 +186,7 @@
 
         function inciarJogada() {
             if (!jogo) {
+                velocidadeBola = velocidadeCpu = velocidadeJogador = 8;
                 cancelAnimationFrame(frames); // Cancelar, pois se não ia ficar várias chamadas repetidas.
                 jogo = true;
                 // Posições.
