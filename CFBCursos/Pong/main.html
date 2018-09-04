@@ -126,7 +126,7 @@
             
             // Colisão com jogador.
             if ((posBolaX <= posJogadorX+barraW) && ((posBolaY+bolaH >= posJogadorY) && (posBolaY <= posJogadorY+barraH))) {
-                bolaY = (((posBolaY+(bolaH/2)) - (posJogadorY+(barraH/2))) / 16); // Calcula para a bolinha mudar a trajetoria e/ou aumentar velocidade.
+                bolaY = (((posBolaY+(bolaH/2)) - (posJogadorY+(barraH/2))) / 32); // Calcula para a bolinha mudar a trajetoria e/ou aumentar velocidade.
                 bolaX *= -1;
             }
 
@@ -134,7 +134,7 @@
             if ((posBolaX >= posCpuX-barraW) 
                 && ((posBolaY+bolaH >= posCpuY)
                 && (posBolaY <= posCpuY+barraH))) {
-                bolaY = ((posBolaY+(bolaH/2)) - (posCpuY+(barraH/2))) / 16; // Calcula para a bolinha mudar a trajetoria e/ou aumentar velocidade.
+                bolaY = ((posBolaY+(bolaH/2)) - (posCpuY+(barraH/2))) / 32; // Calcula para a bolinha mudar a trajetoria e/ou aumentar velocidade.
                 bolaX *= -1;
             }
 
