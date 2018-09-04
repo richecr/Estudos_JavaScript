@@ -125,9 +125,7 @@
             posBolaY += velocidadeBola * bolaY;
             
             // Colisão com jogador.
-            if ((posBolaX <= posJogadorX+barraW) &&
-                ((posBolaY+bolaH >= posJogadorY) && (posBolaY <= posJogadorY+barraH))) {
-                
+            if ((posBolaX <= posJogadorX+barraW) && ((posBolaY+bolaH >= posJogadorY) && (posBolaY <= posJogadorY+barraH))) {
                 bolaY = (((posBolaY+(bolaH/2)) - (posJogadorY+(barraH/2))) / 16); // Calcula para a bolinha mudar a trajetoria e/ou aumentar velocidade.
                 bolaX *= -1;
             }
@@ -147,24 +145,12 @@
 
             // Controlando 'gols'.
             if (posBolaX >= (campoW - bolaW)) {
-                velocidadeBola = 0;
-                posBolaX = posBolaIniX;
-                posBolaY = posBolaIniY;
-                posJogadorY = posJogIniY;
-                jogador.style.top = posJogadorY+"px";
-                posCpuY = posCpuY;
-                jogador.style.top = posCpuY+"px";
+                gol();
                 pontos++;
                 painelTxtPontos.value = pontos;
                 jogo = false;
             } else if (posBolaX <= 0) {
-                velocidadeBola = 0;
-                posBolaX = posBolaIniX;
-                posBolaY = posBolaIniY;
-                posJogadorY = posJogIniY;
-                jogador.style.top = posJogadorY+"px";
-                posCpuY = posCpuY;
-                jogador.style.top = posCpuY+"px";
+                gol();
                 pontos--;
                 painelTxtPontos.value = pontos;
                 jogo = false;
@@ -172,6 +158,16 @@
 
             bola.style.top = posBolaY + "px";
             bola.style.left = posBolaX + "px";
+        }
+
+        function gol() {
+            velocidadeBola = 0;
+            posBolaX = posBolaIniX;
+            posBolaY = posBolaIniY;
+            posJogadorY = posJogIniY;
+            jogador.style.top = posJogadorY+"px";
+            posCpuY = posCpuY;
+            jogador.style.top = posCpuY+"px";
         }
 
         function controladorCpu() {
@@ -203,10 +199,6 @@
                     cpu.style.top = posCpuY + "px";
                 }
             }
-        }
-
-        function fazCpuIrMeio() {
-            
         }
 
         // Controlar o jogo, incluindo animações.
@@ -258,8 +250,6 @@
             
             document.addEventListener("keydown", tecladoDown);
             document.addEventListener("keyup", tecladoUp);
-
-
         }
 
         window.addEventListener("load", iniciar);
