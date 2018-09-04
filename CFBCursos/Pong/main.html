@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Pong</title>
+    <style>
+        body {
+            margin: 0px;
+            background-color: #aaa;
+        }
+        #divPainel {
+            display: flex;
+            height: 50px;
+            align-items: center;
+        }
+        .itemPainel {
+            margin: 5px;
+        }
+        #divJogo {
+            width: 960px;
+            height: 500px;
+            border: 1px solid #000;
+            background-color: #000;
+        }
+        #divBola {
+            position: absolute;
+            top: 240px;
+            left: 475px;
+            width: 20px;
+            height: 20px;
+            background-color: #888;
+        }
+        .barra {
+            position: absolute;
+            width: 20px;
+            height: 140px;
+            background-color: #888;
+            top: 180px;
+        }
+        .esquerda {
+            left: 10px;
+        }
+        .direita {
+            left: 930px;
+        }
+    </style>
+
+    <script>
+        
+        // Elementos da interface.
+        var btnIniciar;
+        var bola;
+        var cpu;
+        var jogador;
+        var painelTxtPontos;
+
+        // Controle de animações.
+        var game;
+        var frames;
+
+        // Para as posições dos elementos.
+        var posBolaX, posBolaY;
+        var posJogadorX, posJogadorY;
+        var posCpuX, posCpuY;
+
+        // Direção de acordo com o teclado.
+        var dirJy; // Vai servir como multiplicador.
+        
+        // Posições iniciais.
+        var posJogIniY = 180;
+        var posCpuIniY = 180;
+        var posBolaIniX = 475, posBolaIniY = 240;
+
+        // Tamanhos.
+        var campoX = 0, campoY = 0, campoW = 960, campoH = 500;
+        var barraW = 20, barraH = 140; bolaW = 20; bolaH = 20;
+
+        // Direção.
+        var bolaX, bolaY;
+        var cpuY = 0;
+
+        // Velocidade.
+        var velocidadeBola;
+        var velocidadeCpu;
+        var velocidadeJogador;
+
+        // Controles.
+        var pontos = 0;
+        var tecla;
+
+        var jogo = false;
+
+        // Para mover.
+        function tecladoDown() {
+            tecla = event.keyCode;
+            if (tecla == 38) // CIMA
+                dirJy =- 1; // Pq é invertido.
+            else if (tecla == 40) // BAIXO
+                dirJy =+ 1;
+        }
+        
+        // Para parar a movimentação.
+        function tecladoUp() {
+            tecla = event.keyCode;
+            if (tecla == 38) // CIMA
+                dirJy = 0; 
+            else if (tecla == 40) // BAIXO
+                dirJy = 0;
+        }
+
+        // Movimentação do jogador.
+        function controladorJogador() {
+            if (jogo) {
+                posJogadorY += velocidadeJogador * dirJy;
+                if (((posJogadorY+barraH) >= campoH) || posJogadorY <= 0) {
+                    posJogadorY += (velocidadeJogador * dirJy) * -1;
+                }
+                jogador.style.top = posJogadorY+"px";
+            }
+        }
+
+        // Movimentação da bola.
+        function controladorBola() {
+            posBolaX += velocidadeBola * bolaX;
+            posBolaY += velocidadeBola * bolaY;
+            
+            // Colisão com jogador.
+            if ((posBolaX <= posJogadorX+barraW) &&
+                ((posBolaY+bolaH >= posJogadorY) && (posBolaY <= posJogadorY+barraH))) {
+                
+                bolaY = (((posBolaY+(bolaH/2)) - (posJogadorY+(barraH/2))) / 16); // Calcula para a bolinha mudar a trajetoria e/ou aumentar velocidade.
+                bolaX *= -1;
+            }
+
+            // Colisão com cpu.
+            if ((posBolaX >= posCpuX-barraW) 
+                && ((posBolaY+bolaH >= posCpuY)
+                && (posBolaY <= posCpuY+barraH))) {
+                bolaY = ((posBolaY+(bolaH/2)) - (posCpuY+(barraH/2))) / 16; // Calcula para a bolinha mudar a trajetoria e/ou aumentar velocidade.
+                bolaX *= -1;
+            }
+
+            bola.style.top = posBolaY + "px";
+            bola.style.left = posBolaX + "px";
+        }
+
+        // Controlar o jogo, incluindo animações.
+        function game() {
+            if (jogo) {
+                controladorBola();
+                controladorJogador();
+                
+            }
+            frames = requestAnimationFrame(game);
+        }
+
+        function inciarJogada() {
+            if (!jogo) {
+                cancelAnimationFrame(frames); // Cancelar, pois se não ia ficar várias chamadas repetidas.
+                jogo = true;
+                // Posições.
+                dirJy = 0;
+
+                bolaY = 0;
+                if ((Math.random()*10) < 5) {
+                    bolaX = -1;
+                } else {
+                    bolaX = 1;
+                }
+                posBolaX = posBolaIniX;
+                posBolaY = posBolaIniY;
+                posJogadorY = posJogIniY;
+                posCpuY = posCpuIniY;
+                bola.style.top = posBolaY+"px";
+                bola.style.left = posBolaX+"px";
+                game();
+            }
+        }
+
+        function iniciar() {
+            
+            velocidadeBola = velocidadeCpu = velocidadeJogador = 8;
+
+            // Pegando os objetos da interface.
+            btnIniciar = document.getElementById("btnJogar");
+            btnIniciar.addEventListener("click", inciarJogada);
+            jogador = document.getElementById("divJogador");
+            cpu = document.getElementById("divCpu");
+            bola = document.getElementById("divBola");
+            painelTxtPontos = document.getElementById("txtPontos");
+            
+            document.addEventListener("keydown", tecladoDown);
+            document.addEventListener("keyup", tecladoUp);
+
+
+        }
+
+        window.addEventListener("load", iniciar);
+    </script>
+</head>
+<body>
+
+    <div id="divJogo">
+        <div id="divBola"></div>
+        <div id="divJogador" class="barra esquerda"></div>
+        <div id="divCpu" class="barra direita"></div>
+    </div>
+
+    <div id="divPainel">
+        <div class="itemPaienl">
+            <label>Pontos</label>
+            <input type="text" id="txtPontos" value="0" size="10">
+        </div>
+        <div class="itemPainel"></div>
+        <button id="btnJogar">Jogar</button>
+    </div>
+    
+</body>
+</html>
