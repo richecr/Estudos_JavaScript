@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DOM</title>
+</head>
+<body>
+    
+    <div id="div">
+
+    </div>
+
+    <script>
+        
+        var p = document.createElement("p");
+        p.innerHTML = "Olá!";
+
+        var h1 = document.createElement("h1");
+        h1.innerHTML = "H1";
+
+        document.getElementById("div").appendChild(p);
+        document.getElementById("div").appendChild(h1);
+
+        document.getElementById("div").removeChild(p);
+
+        console.log(document.getElementById("div").parentNode);
+    </script>
+
+</body>
+</html>
