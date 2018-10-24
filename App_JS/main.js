@@ -2,7 +2,7 @@ var listElement = document.querySelector("#app ul");
 var inputElement = document.querySelector("#app input");
 var btnElement = document.querySelector("#app button");
 
-var todos = ["Fazer café", "Estudar JS", "Acessar GitHub"];
+var todos = JSON.parse(localStorage.getItem('list_todos')) || [];
 
 function renderizaLista() {
     listElement.innerHTML = "";
@@ -30,12 +30,19 @@ function add() {
     li.innerText = nome;
     todos.push(nome);
     renderizaLista();
+    saveToStorage()
 }
 
 function excluir(pos) {
     // remove uma vez nessa posição.
     todos.splice(pos, 1);
     renderizaLista();
+    saveToStorage()
+}
+
+function saveToStorage() {
+    // Precisa salvar o objeto em forma de 'String'
+    localStorage.setItem('list_todos', JSON.stringify(todos));
 }
 
 renderizaLista();
