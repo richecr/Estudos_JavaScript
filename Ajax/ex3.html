@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+  <title>Exercício 03</title>
+</head>
+
+<body>
+  <input type="text" name="user">
+  <button onclick="listRepositories()">Adicionar</button>
+
+  <ul></ul>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    var listElement = document.querySelector('ul');
+    var inputElement = document.querySelector('input');
+    
+    /**
+     * Método que renderiza os repositorios na tela.
+     */
+    function renderRepositories(repositories) {
+      listElement.innerHTML = "";
+      for (repo of repositories) {
+        const textElement = document.createTextNode(repo.name);
+        const liElement = document.createElement('li');
+        liElement.appendChild(textElement);
+        listElement.appendChild(liElement);
+      }
+    }
+
+    /**
+     * Método que renderiza "Carregando" na tela.
+     */
+    function renderLoading(loading) {
+      listElement.innerHTML = "";
+      var textElement = document.createTextNode('Carregando...');
+      var loadingElement = document.createElement('li');
+      loadingElement.appendChild(textElement);
+      listElement.appendChild(loadingElement);
+    }
+
+    /**
+     * Método que renderiza a mensagem de erro na tela.
+     */
+    function renderError(loading) {
+      listElement.innerHTML = "";
+      var textElement = document.createTextNode('Erro!');
+      var errorElement = document.createElement('li');
+      errorElement.style.color = "#F00";
+      errorElement.appendChild(textElement);
+      listElement.appendChild(errorElement);
+    }
+
+    /**
+     * Método que busca o usuario no github e então invoca o método para renderizar os repos na tela.
+     */
+    function listRepositories() {
+      var user = inputElement.value;
+      if (!user) return;
+      renderLoading();
+      axios.get('https://api.github.com/users/' + user + '/repos')
+        .then(function (response) {
+          renderRepositories(response.data);
+        })
+        .catch(function () {
+          renderError();
+        });
+    }
+  </script>
+</body>
+
+</html>
