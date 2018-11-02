@@ -16,7 +16,6 @@ function buscaDeputados() {
     renderizaDeputados(deputados);
 }
 
-
 function renderizaDeputados() {
     deputados.forEach(element => {
         var dep = document.createElement("li");
@@ -72,7 +71,14 @@ function adicionaDeputados(deps) {
 
 function pageDeputado(pos) {
     // Abrir uma nova página.
-    console.log(deputados[pos].nome);
+    var a = document.createElement("a");
+    a.href = "pageDeputado.html";
+    a.click();
+    salvarDeputado(deputados[pos]);
+}
+
+function salvarDeputado(deputado) {
+    localStorage.setItem("deputado", JSON.stringify(deputado));
 }
 
 acessaApi("https://dadosabertos.camara.leg.br/api/v2/deputados?ordem=ASC&ordenarPor=nome&pagina=1&itens=100");
