@@ -1,0 +1,9 @@
+1) Para iniciar um projeto Yarn: yarn init
+
+2) Para instalar a interface do bable: yarn add @bable/cli
+
+3) Para instalar saber o ambiente(browser e etc): yarn add @babel/preset-env
+
+--- Configurar o babel:
+
+4) Criar o arquivo ".babelrc"
