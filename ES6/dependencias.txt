@@ -9,3 +9,8 @@
 --- Configurar o babel:
 
 5) Criar o arquivo ".babelrc"
+
+--- Instalação de Plugins:
+
+6) Para instalar os operadores rest/spread: yarn add @babel/plugin-proposal-object-reset-spread
+    Tem que colocar uma variavel no arquivo ".babelrc".
