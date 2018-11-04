@@ -62,11 +62,23 @@ function (_List) {
 
   return TodoList;
 }(List);
+/*const minhaTodo = new TodoList();
+document.getElementById("novoTodo").onclick = function(){
+    minhaTodo.add("Novo todo");
+}*/
 
-var minhaTodo = new TodoList();
 
-document.getElementById("novoTodo").onclick = function () {
-  minhaTodo.add("Novo todo");
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var newArray = array.map(function (item) {
+  return item * 2;
+});
+console.log(newArray);
+
+var teste = function teste() {
+  return {
+    nome: "Rick",
+    idade: 18
+  };
 };
 
-minhaTodo.mostraUser();
+console.log(teste());

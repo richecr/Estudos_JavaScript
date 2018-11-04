@@ -21,10 +21,17 @@ class TodoList extends List {
     }
 }
 
-
-const minhaTodo = new TodoList();
+/*const minhaTodo = new TodoList();
 document.getElementById("novoTodo").onclick = function(){
     minhaTodo.add("Novo todo");
-}
+}*/
 
-minhaTodo.mostraUser();
+const array = [1,2,3,4,5,6,7,8,9,10];
+
+const newArray = array.map((item) => item * 2);
+
+console.log(newArray);
+
+const teste = () => ({ nome: "Rick", idade: 18 });
+
+console.log(teste());

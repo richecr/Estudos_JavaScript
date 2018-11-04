@@ -4,6 +4,8 @@
 
 3) Para instalar saber o ambiente(browser e etc): yarn add @babel/preset-env
 
+4) Para executar: yarn dev(variavel criada no package.json).
+
 --- Configurar o babel:
 
-4) Criar o arquivo ".babelrc"
+5) Criar o arquivo ".babelrc"
