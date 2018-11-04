@@ -9,6 +9,6 @@
     "@babel/preset-env": "^7.1.0"
   },
   "scripts": {
-    "dev": "babel -w ./main.js -o ./bundle.js"
+    "dev": "babel -w ./main2.js -o ./bundle.js"
   }
 }
