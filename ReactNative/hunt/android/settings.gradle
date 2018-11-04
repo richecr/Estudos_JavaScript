@@ -1,0 +1,3 @@
+rootProject.name = 'hunt'
+
+include ':app'
