@@ -1,21 +1,6 @@
 var deputados = [];
 var data;
 
-function buscaDeputados() {
-    
-    if (data != undefined){
-        while(continua(data.links)) {
-            acessaApi(data.links[1].href);
-            console.log(data);
-            //adicionaDeputados(data.dados);
-        }
-    } else {
-        console.log("OKOK");
-        
-    }
-    renderizaDeputados(deputados);
-}
-
 function renderizaDeputados() {
     deputados.forEach(element => {
         var dep = document.createElement("li");
@@ -44,23 +29,18 @@ function renderizaDeputados() {
     });
 }
 
-function acessaApi(url) {
-    axios.get(url)
-    .then(function(response){
-        data = response.data;
-        adicionaDeputados(data.dados);
-        
-        for (let i = 0; i < data.links.length; i++) {
-            if (data.links[i].rel === "next") {
-                acessaApi(data.links[i].href);
-                return;
-            }
-        }
+acessaApi = async (url) => {
+    var res = await axios.get(url);
+    const { dados, ...resto } = res.data;
+    adicionaDeputados(dados);
 
-        renderizaDeputados();
-    }).catch(function(error){
-        console.log(error);
-    });
+    for (let i = 0; i < resto.links.length; i++) {
+        if (resto.links[i].rel === "next") {
+            acessaApi(resto.links[i].href);
+            return;
+        }
+    }
+    renderizaDeputados()
 }
 
 function adicionaDeputados(deps) {
