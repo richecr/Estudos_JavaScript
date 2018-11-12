@@ -8,7 +8,6 @@ acessa = async (url) => {
 }
 
 function renderizaDeputado() {
-    console.log(deputado);
     var div = document.getElementById('div');
 
     var nome = document.createElement("h1");
