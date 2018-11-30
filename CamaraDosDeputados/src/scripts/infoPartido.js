@@ -18,7 +18,7 @@ renderizaPartido = () => {
     
     var foto = document.createElement("img");
     foto.src = partido.urlLogo;
-    foto.style = "margin-left: 540px; float:left;"; // mudar.
+    foto.style = "margin-left: 50%; float:left;"; // mudar.
     
     div.appendChild(nome);
     div.appendChild(foto);
