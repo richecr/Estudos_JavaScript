@@ -11,11 +11,10 @@ function renderizaDeputado() {
     var div = document.getElementById('div');
 
     var nome = document.createElement("h1");
-    nome.style = "font-family: Courier New, Courier, monospace;font-style: italic;color: gray; margin-left: 470px";
+    nome.style = "font-family: Courier New, Courier, monospace;font-style: italic;color: gray";
     nome.textContent = deputado.ultimoStatus.nome + " - " + deputado.ultimoStatus.siglaPartido;
 
     var foto = document.createElement("img");
-    foto.style = "margin-left: 650px;"; // mudar.
     foto.src = deputado.ultimoStatus.urlFoto;
 
     var informacoes = document.getElementById("infor");
@@ -40,8 +39,8 @@ function renderizaDeputado() {
     escolaridade.style = "font-family: Courier New, Courier, monospace;font-style: italic;color: gray";
     escolaridade.textContent = "Escolaridade: " + deputado.escolaridade;
 
-    var gabineteInfo = document.createElement("div");
-
+    
+    var gabineteInfo = document.getElementById("gabinete");
 
     var gabinete = document.createElement("h1");
     gabinete.style = "font-family: Courier New, Courier, monospace;font-style: italic;color: gray";
@@ -84,8 +83,6 @@ function renderizaDeputado() {
     
     div.appendChild(nome);
     div.appendChild(foto);
-    div.appendChild(informacoes);
-    div.appendChild(gabineteInfo);
 }
 
 formataData = (data) => {
