@@ -1,12 +1,12 @@
 pageDep = () => {
     var a = document.createElement("a");
-    a.href = "deputados.html";
+    a.href = "deputados/deputados.html";
     a.click();
 }
 
 pagePar = () => {
     var a = document.createElement("a");
-    a.href = "partidos.html";
+    a.href = "partidos/partidos.html";
     a.click();
     salvarDeputado(deputados[pos]);
 }

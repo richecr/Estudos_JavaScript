@@ -90,7 +90,7 @@ renderizaPartido = () => {
 function pageDeputado() {
     // Abrir uma nova página.
     var a = document.createElement("a");
-    a.href = "pageDeputado.html";
+    a.href = "F:/Rick/Documentos/Cursos_JavaScript/CamaraDosDeputados/src/pages/deputados/pageDeputado.html";
     a.click();
     salvarDeputado();
 }
