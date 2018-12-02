@@ -1,6 +1,5 @@
 var partido = null;
 var deputadolider = null;
-var deputados = [];
 
 var uri = JSON.parse(localStorage.getItem('uriPartido')) || [];
 
@@ -8,21 +7,15 @@ acessaApi = async (uri) => {
     const res = await axios.get(uri);
     const { dados, ...resto} = res.data;
     partido = dados;
-    acessaDeputado(partido.status.lider.uri);
-    //salvaDeputados(dados.status.uriMembros);
-    
 }
 
-/* TODO listagens dos deputados do partido.
-salvaDeputados = async (uri) => {
+acessaDeputado = async (uri) => {
     const res = await axios.get(uri);
-    console.log(res);
+    const { dados, ...resto } = res.data;
+    deputadolider = dados;
 }
-*/
-
 
 renderizaPartido = () => {
-    console.log(partido);
     var div = document.getElementById("div");
 
     var nome = document.createElement("h1");
@@ -92,17 +85,6 @@ renderizaPartido = () => {
     detalhesLider.appendChild(nomeLider);
     detalhesLider.appendChild(ufLider);
     detalhesLider.appendChild(button);
-
-    var listar_deputados = document.getElementById("listar_deputados");
-
-}
-
-acessaDeputado = async (uri) => {
-    const res = await axios.get(uri);
-    const { dados, ...resto } = res.data;
-    deputadolider = dados;
-
-    renderizaPartido();
 }
 
 function pageDeputado() {
@@ -150,4 +132,10 @@ formataUfNascimento = (sigla) => {
     return estados.get(sigla);
 }
 
-acessaApi(uri);
+init = async () => {
+    await acessaApi(uri);
+    await acessaDeputado(partido.status.lider.uri);
+    renderizaPartido();
+}
+
+init();
