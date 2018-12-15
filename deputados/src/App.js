@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-//import Deputado from './Components/Deputados/deputado';
+import Router from "./routes";
 
-class App extends Component {
+export default class App extends React.Component {
 
-  render() {
-    return (
-      <div>
-        <p>ooo</p>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div>
+				<Router />
+			</div>
+		)
+	}
 }
-
-export default App;
