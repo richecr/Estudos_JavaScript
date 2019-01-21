@@ -1,13 +1,32 @@
 // vamos começar, carregando o express e criando a app
-const app = require('express')(),
-      path = require('path')
+const express = require("express")
+const app = express()
+const path = require('path')
 
-// então, criamos uma rota para '/'
-app.get('/', (req, res) => {
-  // aqui precisamos enviar o index.html para o cliente
-  res.sendFile(path.join(__dirname + '/index.html'))
+app.get("/", (req, res)=>{
+  res.sendFile(path.join(__dirname + "/index.html"));
 })
 
-// no fim, iniciamos o serviço na porta 8001
-app.listen(8001)
-console.log('8001 é a porta mágica!')
+var adminRouter = express.Router();
+
+// Cria rota para página principal. (http://localhost:8000/admin)
+adminRouter.get("/", function(req, res){
+  res.send("Eu sou o dashboard!");
+})
+
+// Cria rota para página de usuários. (http://localhost:8000/admin/users)
+adminRouter.get("/users", function(req, res){
+  res.send("Aqui listamos todos os users!");
+})
+
+// Cria rota para página de posts. (http://localhost:8000/admin/posts)
+adminRouter.get("/posts", function(req, res) {
+  res.send("Aqui listamos todos os posts!")
+})
+
+// Adiciona essas rotas a aplicação principal.
+app.use("/admin", adminRouter);
+
+// Iniciamos o servidor na porta 8000.
+app.listen(8000);
+console.log(("8000 é a porta mágica!"));
