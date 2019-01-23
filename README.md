@@ -4,7 +4,7 @@
 
 [Nesse livro](http://stack.desenvolvedor.expert/), você vai aprender sobre quatro ferramentas (Node.js, ExpressJS, MongoDB e React) e como elas combinadas formam um incrível Full-Stack JavaScript.
 
-**Esse é um livro três em um. Começando com React, Começando com Node.js e Desenvolvendo aplicativos com Node e React. Você aprenderá a desenvolver não apenas aplicações JavaScript, mas também aplicações Node e React.**
+Esse é um livro três em um. Começando com React, Começando com Node.js e Desenvolvendo aplicativos com Node e React. Você aprenderá a desenvolver não apenas aplicações JavaScript, mas também aplicações Node e React.
 
 **Ao final desse livro, você saberá:**
 
