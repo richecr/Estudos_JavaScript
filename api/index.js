@@ -81,6 +81,43 @@ apiRouter.route('/users')
         })
     })
 
+// Rotas terminadas em 'users/:id'
+apiRouter.route('/users/:id')
+    // Retorna um user (GET).
+    .get(function(req, res) {
+        User.findById(req.params.id, function(err, user) {
+            if (err) res.send(err);
+
+            res.json(user);
+        })
+    })
+
+    // Atualizando um user (PUT).
+    .put(function(req, res) {
+        User.findById(req.params.id, function (err, user) {
+            if (err) res.send(err);
+
+            if (req.body.name) user.name = req.body.name;
+            if (req.body.username) user.username = req.body.username;
+            if (req.body.password) user.password = req.body.password;
+
+            user.save(function(err) {
+                if (err) res.send(err);
+
+                res.json({ message: 'Usuário atualizado!' });
+            })
+        })
+    })
+
+    // Deletar um user (DELETE).
+    .delete(function(req, res) {
+        User.findByIdAndDelete(req.params.id, function (err, user){
+            if (err) res.send(err);
+
+            res.send({ message: 'Usuário deletado!'});
+        })
+    })
+
 app.use("/api", apiRouter);
 
 // Iniciando serviço.
