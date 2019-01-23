@@ -46,6 +46,41 @@ apiRouter.get("/", (req, res) => {
     res.json({ message : "Essa é a nossa api."});
 })
 
+// Rotas terminadas em '/users'.
+apiRouter.route('/users')
+    
+    // Criar users (POST).
+    .post(function(req, res){
+        var user = new User();
+
+        user.name = req.body.name;
+        user.username = req.body.username;
+        user.password = req.body.password;
+
+        user.save(function(err){
+            if (err) {
+                if (err.code === 11000) {
+                    return res.json({
+                        sucess: false,
+                        message: 'Um usuário com esse username já existe.'
+                    })
+                } else {
+                    return res.send(err);
+                }
+            }
+            res.json({ message : 'Usuário criado!' });
+        })
+    })
+
+    // Listando usuários (GET).
+    .get(function(req, res){
+        User.find(function(err, users){
+            if (err) res.send(err);
+
+            return res.json(users);
+        })
+    })
+
 app.use("/api", apiRouter);
 
 // Iniciando serviço.
