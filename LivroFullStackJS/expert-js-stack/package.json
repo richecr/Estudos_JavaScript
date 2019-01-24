@@ -1,0 +1,16 @@
+{
+  "name": "expert-js-stack",
+  "version": "1.0.0",
+  "description": "Expert JS STACK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@Rick",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.5",
+    "passport": "^0.4.0"
+  }
+}
