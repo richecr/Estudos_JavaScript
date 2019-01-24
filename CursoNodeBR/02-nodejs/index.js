@@ -34,6 +34,33 @@ function obterEndereco(idUsuario, callback) {
     })
 }
 
+async function main() {
+    try {
+        const usuario = await obterUsuario();
+        // const telefone = await obterTelefone(usuario.id);
+        // const endereco = await obterEnderecoAsync(usuario.id);
+        
+        const resultado = await Promise.all([
+            obterTelefone(usuario.id),
+            obterEnderecoAsync(usuario.id)
+        ])
+        const telefone = resultado[0];
+        const endereco = resultado[1];
+
+        console.log(`
+            Nome: ${usuario.nome},
+            Telefone: (${telefone.ddd}), ${telefone.telefone}
+            Endereco: ${endereco.rua}, ${endereco.numero}
+        `);
+        
+    } catch (error) {
+        console.log("Ihh rapaz", error);
+    }
+}
+
+main();
+
+/*
 const usuarioPromisse = obterUsuario()
 
 usuarioPromisse
@@ -66,6 +93,7 @@ usuarioPromisse
     .catch(function (error) {
         console.error("Ihh rapaz", error);
     })
+*/
 
 /*obterUsuario(function resolverUsuario(erro, usuario) {
     if (erro) return "Erro";
