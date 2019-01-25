@@ -1,5 +1,15 @@
 const service = require('./service');
 
+Array.prototype.meuMap = function (callback) {
+    const saida = [];
+    for (let index = 0; index < this.length-1; index++) {
+        const resultado = callback(this[index], index);
+        saida.push(resultado);
+    }
+
+    return saida;
+}
+
 async function main() {
     try {
         const result = await service.obterPessoas('a');
@@ -8,7 +18,10 @@ async function main() {
             return pessoa.name
         })*/
 
-        const names = result.results.map((pessoa) => pessoa.name);
+        // const names = result.results.map((pessoa) => pessoa.name);
+
+        // Meu map.
+        const names = result.results.meuMap((pessoa, indice) => `[${indice}]${pessoa.name}`)
 
         console.log('names: ', names);
     } catch (error) {
