@@ -49,6 +49,25 @@ class DataBase {
         return await this.escreverDados(dados);
     }
 
+    async atualizar(id, modificacoes) {
+        const dados = await this.obterDadosArquivo()
+        const indice = dados.findIndex(item => item.id === parseInt(id))
+        if (indice === -1){
+            throw Error("Heroi não existe! :(")
+        }
+        const atual = dados[indice]
+        const heroiAtualizado = {
+            ...atual,
+            ...modificacoes
+        }
+        dados.splice(indice, 1)
+        
+        return await this.escreverDados([
+            ...dados,
+            heroiAtualizado
+        ])
+    }
+
     async listar(id) {
         const dados = await this.obterDadosArquivo();
         const dadosFiltrados = dados.filter( item => (id ? (item.id === id) : true) );
