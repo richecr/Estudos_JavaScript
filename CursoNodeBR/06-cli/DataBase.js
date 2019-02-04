@@ -36,6 +36,19 @@ class DataBase {
         return resultado;
     }
 
+    async remover(id) {
+        if (!id) {
+            return await this.escreverDados([]);
+        }
+        const dados = await this.obterDadosArquivo()
+        const indice = dados.findIndex(item => item.id === parseInt(id));
+        if (indice === -1) {
+            throw Error("Heroi informado não existe! :(");
+        }
+        dados.splice(indice, 1);
+        return await this.escreverDados(dados);
+    }
+
     async listar(id) {
         const dados = await this.obterDadosArquivo();
         const dadosFiltrados = dados.filter( item => (id ? (item.id === id) : true) );
