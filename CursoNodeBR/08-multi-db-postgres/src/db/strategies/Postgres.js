@@ -68,6 +68,10 @@ class PostGres extends ICrud {
     read(query = {}) {
         return this._herois.findAll({ where: query, raw: true });
     }
+
+    update(id, novoItem) {
+        return this._herois.update(novoItem, { where: {id: id}} );
+    }
 }
 
 module.exports = PostGres;
