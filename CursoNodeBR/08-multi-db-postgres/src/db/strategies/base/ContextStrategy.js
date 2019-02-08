@@ -6,8 +6,8 @@ class ContextStrategy extends ICrud {
         this._database = strategy;
     }
 
-    create(item) {
-        return this._database.create(item);
+    async create(item) {
+        return await this._database.create(item);
     }
 
     read(query) {
@@ -20,6 +20,10 @@ class ContextStrategy extends ICrud {
 
     delete(id) {
         return this._database.delete(id);
+    }
+
+    connect() {
+        return this._database.connect();
     }
 
     isConnected() {

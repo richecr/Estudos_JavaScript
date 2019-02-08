@@ -8,7 +8,6 @@ class PostGres extends ICrud {
         super();
         this._driver = null;
         this._herois = null;
-        this._connect();
     }
 
     async isConnected() {
@@ -21,7 +20,7 @@ class PostGres extends ICrud {
         }
     }
 
-    _connect() {
+    async connect() {
         this._driver = new Sequelize(
             'heroes',
             'rickelton',
@@ -33,10 +32,11 @@ class PostGres extends ICrud {
                 operatorsAliases: false
             }
         )
+        await this._defineModel();
     }
 
-    async defineModel() {
-        this._herois = this.driver.define('herois', {
+    async _defineModel() {
+        this._herois = this._driver.define('herois', {
             id: {
                 type: Sequelize.INTEGER,
                 require: true,
@@ -60,8 +60,9 @@ class PostGres extends ICrud {
         await this._herois.sync();
     }
 
-    create(item) {
-        console.log("O item foi salvo no postgres");
+    async create(item) {
+        const { dataValues } = await this._herois.create(item);
+        return dataValues; 
     }
 }
 
