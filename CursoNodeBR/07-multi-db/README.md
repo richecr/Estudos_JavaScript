@@ -21,7 +21,7 @@ docker run \
 
 ## ---- MONGODB
 docker run \
-    --name mongodb \
+    --name dbmongo \
     -p 27017:27017 \
     -e MONGO_INITDB_ROOT_USERNAME=admin \
     -e MONGO_INITDB_ROOT_PASSWORD=senhaadmin \
@@ -31,9 +31,9 @@ docker run \
 ## ---- Cliente para o banco mongodb
 docker run \
     --name mongoclient \
-    -p 3000:3000 \
-    --link mongodb:mongodb \
     -d \
+    -p 17017:3000 \
+    --link dbmongo:dbmongo \
     mongoclient/mongoclient
 
 ## ---- Criando user
