@@ -11,20 +11,21 @@ const MOCK_HEROI_CADASTRAR = {
 const MOCK_HEROI_ATUALIZAR = {
     nome: 'Homem-Aranha',
     poder: 'Ser nerd'
-}
+};
 
 describe('postgres strategy', function() {
     this.timeout(Infinity);
 
     this.beforeAll(async function () {
         await context.connect();
+        //await context.delete();
         await context.create(MOCK_HEROI_ATUALIZAR);
     });
 
     it('Postgres Connection', async function() {
         const result = await context.isConnected();
         assert.equal(result, true);
-    })
+    });
 
     it('Cadastrar um heroi', async function() {
         const result = await context.create( MOCK_HEROI_CADASTRAR );
@@ -48,6 +49,12 @@ describe('postgres strategy', function() {
         const [itemAtualizado] = await context.read({ id: itemAtualizar.id });
         assert.deepEqual(itemAtualizado.nome, novoItem.nome);
         assert.deepEqual(result, 1);
-
     });
+
+    it('Deletar um heroi', async function () {
+        const [item] = await context.read({});
+
+        const result = await context.delete(item.id);
+        assert.deepEqual(result, 1);
+    })
 })

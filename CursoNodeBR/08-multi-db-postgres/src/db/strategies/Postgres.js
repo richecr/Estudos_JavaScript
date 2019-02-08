@@ -72,6 +72,12 @@ class PostGres extends ICrud {
     update(id, novoItem) {
         return this._herois.update(novoItem, { where: {id: id}} );
     }
+
+    async delete(id) {
+        const query = id ? { id } : {};
+
+        return this._herois.destroy({ where: query });
+    }
 }
 
 module.exports = PostGres;
