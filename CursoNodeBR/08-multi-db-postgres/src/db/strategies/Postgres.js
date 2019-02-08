@@ -64,6 +64,10 @@ class PostGres extends ICrud {
         const { dataValues } = await this._herois.create(item);
         return dataValues; 
     }
+
+    read(query = {}) {
+        return this._herois.findAll({ where: query, raw: true });
+    }
 }
 
 module.exports = PostGres;
