@@ -69,8 +69,8 @@ class MongoDB extends ICrud {
         await this.defineModel();
     }
 
-    create(item) {
-        console.log("O item foi salvo em mongodb");
+    async create(item) {
+        return await this._herois.create(item);
     }
 }
 
