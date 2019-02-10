@@ -29,7 +29,7 @@ setTimeout(() => {
  *      3: Desconectando.
  */
 
-const heroiSchema = Mongoose.Schema({
+const heroiSchema = new Mongoose.Schema({
     nome: {
         type: String,
         require: true // Obrigatório.
