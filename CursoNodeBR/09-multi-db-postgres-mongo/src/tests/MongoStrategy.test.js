@@ -26,5 +26,10 @@ describe("Mongo strategy", function () {
         assert.deepEqual({ nome, poder }, MOCK_CADASTRAR);
     });
 
+    it('Listar herois', async () => {
+        const { nome, poder } = await context.read({ nome: 'Batman' });
+        assert.deepEqual({nome, poder}, MOCK_CADASTRAR);
+    });
+
 
 })
