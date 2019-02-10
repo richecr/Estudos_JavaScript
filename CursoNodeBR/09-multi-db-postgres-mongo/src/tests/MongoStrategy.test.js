@@ -12,12 +12,18 @@ const MOCK_CADASTRAR = {
 const MOCK_ATUALIZAR = {
     nome: 'Flash',
     poder: 'Rápido'
+};
+
+const MOCK_DELETAR = {
+    nome: 'Homem de Ferro',
+    poder: 'Lata'
 }
 
 describe("Mongo strategy", function () {
     this.beforeAll(async () => {
         await context.connect();
         await context.create(MOCK_ATUALIZAR);
+        await context.create(MOCK_DELETAR);
     })
     
     it('Verificar conexão', async () => {
@@ -43,5 +49,8 @@ describe("Mongo strategy", function () {
         assert.deepEqual({ nome, poder }, { nome: "Flash", poder: "Velocidade"});
     });
 
-
+    it('Deletando um heroi', async () => {
+        const result = await context.delete({nome: 'Homem de Ferro'});
+        assert.deepEqual(result.n, 1);
+    });
 })
