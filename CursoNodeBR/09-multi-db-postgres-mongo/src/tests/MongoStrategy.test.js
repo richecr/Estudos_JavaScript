@@ -6,12 +6,18 @@ const context = new Context(new Mongo());
 
 const MOCK_CADASTRAR = {
     nome: 'Batman',
-    poder: 'Velocidade'
+    poder: 'Dinheiro'
 };
+
+const MOCK_ATUALIZAR = {
+    nome: 'Flash',
+    poder: 'Rápido'
+}
 
 describe("Mongo strategy", function () {
     this.beforeAll(async () => {
         await context.connect();
+        await context.create(MOCK_ATUALIZAR);
     })
     
     it('Verificar conexão', async () => {
@@ -29,6 +35,12 @@ describe("Mongo strategy", function () {
     it('Listar herois', async () => {
         const { nome, poder } = await context.read({ nome: 'Batman' });
         assert.deepEqual({nome, poder}, MOCK_CADASTRAR);
+    });
+
+    it('Atualizar um heroi', async () => {
+        await context.update({ nome: 'Flash'}, { poder: "Velocidade" });
+        const { nome, poder } = await context.read({ nome: "Flash" });
+        assert.deepEqual({ nome, poder }, { nome: "Flash", poder: "Velocidade"});
     });
 
 

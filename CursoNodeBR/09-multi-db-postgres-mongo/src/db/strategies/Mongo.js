@@ -77,6 +77,10 @@ class MongoDB extends ICrud {
         const [result] = await this._herois.find(query, { nome: 1, poder: 1, _id: 0 });
         return result;
     }
+
+    async update(id, item) {
+        await this._herois.updateOne(id, { $set: item });
+    }
 }
 
 module.exports = MongoDB;
