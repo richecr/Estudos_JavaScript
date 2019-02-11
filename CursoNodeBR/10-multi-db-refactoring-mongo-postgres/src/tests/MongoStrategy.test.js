@@ -20,10 +20,10 @@ const MOCK_DELETAR = {
     poder: 'Lata'
 }
 
-describe.only("Mongo strategy", function () {
+describe("Mongo strategy", function () {
     this.beforeAll(async () => {
         const connection = Mongo.connect();
-        context = new Mongo(connection, HeroisSchema);
+        context = new Context(new Mongo(connection, HeroisSchema));
         await context.create(MOCK_ATUALIZAR);
         await context.create(MOCK_DELETAR);
     })
