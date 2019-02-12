@@ -103,7 +103,7 @@
   - :white_check_mark:[Aula 7 - Listando Herois - Validando requisições com Joi]()
   - :white_check_mark:[Aula 8 - Cadastrando Heróis - POST]()
   - :white_check_mark:[Aula 9 - Atualizando Heróis - PATCH / PUT]()
-  - [Aula 10 - Removendo Heróis - DELETE]()
+  - :white_check_mark:[Aula 10 - Removendo Heróis - DELETE]()
 
 * **Módulo 10: Documentação de Serviços com Swagger**
 
