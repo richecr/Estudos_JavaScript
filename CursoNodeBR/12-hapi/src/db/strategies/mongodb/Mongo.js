@@ -61,7 +61,7 @@ class MongoDB extends ICrud {
     }
 
     async update(query, item) {
-        await this._schema.updateOne(query, { $set: item });
+        return await this._schema.updateOne(query, { $set: item });
     }
 
     async delete(query) {

@@ -6,10 +6,24 @@ const MOCK_CADASTRAR = {
     poder: "Todos"
 };
 
+const MOCK_ATUALIZAR = {
+    nome: 'Superman',
+    poder: 'Super força'
+};
+let MOCK_ID = '';
+
 let app = {};
-describe('Suite de testes da api heros', async function () {
+describe.only('Suite de testes da api heros', async function () {
     this.beforeAll(async () => {
         app = await api;
+        const result = await app.inject({
+            method: "POST",
+            url: '/herois',
+            payload: MOCK_ATUALIZAR
+        });
+        const dados = JSON.parse(result.payload);
+        MOCK_ID = dados._id;
+
     });
 
     it('Listar GET - /herois', async () => {
@@ -88,4 +102,41 @@ describe('Suite de testes da api heros', async function () {
         assert.notStrictEqual(_id, undefined);
         assert.deepEqual(message, "Heroi cadastrado com sucesso!");
     });
+
+    it('Atualizar PATCH - /herois/:id', async () => {
+        const _id = MOCK_ID;
+        const dados = {
+            poder: "Imbatível"
+        };
+        const result = await app.inject({
+            method: "PATCH",
+            url: `/herois/${_id}`,
+            payload: JSON.stringify(dados)
+        });
+
+        const statusCode = result.statusCode;
+        const dadosFinal = JSON.parse(result.payload);
+
+        assert.ok(statusCode === 200);
+        assert.deepEqual(dadosFinal.message, "Heroi atualizado com sucesso!");
+    });
+
+    it('Atualizar PATCH - /herois/:id - Não deve atualizar nenhum', async () => {
+        const _id = '5c621e18e6b9a7218585d16d'; // ID válido, mas n vai existir no banco(removi de lá)
+        const dados = {
+            poder: "Imbatível"
+        };
+        const result = await app.inject({
+            method: "PATCH",
+            url: `/herois/${_id}`,
+            payload: JSON.stringify(dados)
+        });
+
+        const statusCode = result.statusCode;
+        const dadosFinal = JSON.parse(result.payload);
+
+        assert.ok(statusCode === 200);
+        assert.deepEqual(dadosFinal.message, "Não foi possível atualizar!");
+    });
+    
 });
