@@ -13,7 +13,7 @@ const MOCK_ATUALIZAR = {
 let MOCK_ID = '';
 
 let app = {};
-describe.only('Suite de testes da api heros', async function () {
+describe('Suite de testes da api heros', async function () {
     this.beforeAll(async () => {
         app = await api;
         const result = await app.inject({
@@ -134,9 +134,14 @@ describe.only('Suite de testes da api heros', async function () {
 
         const statusCode = result.statusCode;
         const dadosFinal = JSON.parse(result.payload);
-
-        assert.ok(statusCode === 200);
-        assert.deepEqual(dadosFinal.message, "Não foi possível atualizar!");
+        const expected = {
+            statusCode: 412,
+            error: 'Precondition Failed',
+            message: 'ID não encontrado!'
+        };
+        
+        assert.ok(statusCode === 412);
+        assert.deepEqual(dadosFinal, expected);
     });
 
     it('Deletar DELETE - herois/:id', async () => {
@@ -152,5 +157,42 @@ describe.only('Suite de testes da api heros', async function () {
         assert.ok(statusCode === 200);
         assert.deepEqual(dadosFinal.message, "Heroi deletado com sucesso!");
     });
-    
+
+    it('Deletar DELETE - herois/:id - Não deve remover', async () => {
+        const id = '5c621e18e6b9a7218585d16d';
+        const result = await app.inject({
+            method: "DELETE",
+            url: `/herois/${id}`,
+        });
+
+        const statusCode = result.statusCode;
+        const dadosFinal = JSON.parse(result.payload);
+        const expected = {
+            statusCode: 412,
+            error: 'Precondition Failed',
+            message: 'ID não encontrado!'
+        };
+
+        assert.ok(statusCode === 412);
+        assert.deepEqual(dadosFinal, expected);
+    });
+
+    it('Deletar DELETE - herois/:id - Não deve remover, ID INVALIDO', async () => {
+        const id = 'ID_INVALIDO';
+        const result = await app.inject({
+            method: "DELETE",
+            url: `/herois/${id}`,
+        });
+
+        const statusCode = result.statusCode;
+        const dadosFinal = JSON.parse(result.payload);
+        const expected = {
+            statusCode: 500,
+            error: 'Internal Server Error',
+            message: 'An internal server error occurred'
+        };
+
+        assert.ok(statusCode === 500);
+        assert.deepEqual(dadosFinal, expected);
+    });
 });

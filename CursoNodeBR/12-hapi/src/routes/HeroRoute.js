@@ -1,5 +1,6 @@
 const BaseRoute = require('./base/BaseRoute');
 const Joi = require("joi");
+const boom = require('boom');
 
 const failAction = (request, headers, erro) => {
     throw erro;
@@ -40,8 +41,7 @@ class HeroRoute extends BaseRoute {
                     
                     return this.db.read(query, skip, limit);
                 } catch (error) {
-                    console.error("Deu ruim :( ", error);
-                    return;
+                    return boom.internal();
                 }
             }
         };
@@ -70,9 +70,7 @@ class HeroRoute extends BaseRoute {
                         _id: result._id
                     };
                 } catch (error) {
-                    console.log(("Deu ruim :( ", error));
-                    return "Internal error";
-                    
+                    return boom.internal();
                 }
             }
         }
@@ -104,18 +102,14 @@ class HeroRoute extends BaseRoute {
                     const dados = JSON.parse(dadosString);
                     const result = await this.db.update({ _id: id }, dados);
                     
-                    if (result.nModified !== 1) return {
-                        message: "Não foi possível atualizar!"
-                    }
+                    if (result.nModified !== 1) return boom.preconditionFailed("ID não encontrado!");
                     
                     return {
                         message: "Heroi atualizado com sucesso!"
                     }
 
                 } catch (error) {
-                    console.log("Deu ruim :( ", error);
-                    return "Erro interno!";
-                    
+                    return boom.internal();
                 }
             }
         }
@@ -133,13 +127,18 @@ class HeroRoute extends BaseRoute {
                     }
                 }
             },
-            handler: (request) => {
-                const { id } = request.params;
-                this.db.delete({ _id : id });
+            handler: async (request) => {
+                try {
+                    const { id } = request.params;
+                    const result = await this.db.delete({ _id : id });
+                    if (result.n !== 1) return boom.preconditionFailed("ID não encontrado!");
 
-                return {
-                    message: "Heroi deletado com sucesso!"
-                };
+                    return {
+                        message: "Heroi deletado com sucesso!"
+                    };
+                } catch (error) {
+                    return boom.internal();
+                }
             }
         }
     }
