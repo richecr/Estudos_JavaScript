@@ -1,13 +1,18 @@
 const assert = require('assert');
 const api = require('../api');
 
+const MOCK_CADASTRAR = {
+    nome: "Chapolin",
+    poder: "Todos"
+};
+
 let app = {};
 describe('Suite de testes da api heros', async function () {
     this.beforeAll(async () => {
         app = await api;
     });
 
-    it('Listar /herois', async () => {
+    it('Listar GET - /herois', async () => {
         const result = await app.inject({
             method: "GET",
             url: '/herois'
@@ -19,7 +24,7 @@ describe('Suite de testes da api heros', async function () {
         assert.ok(Array.isArray(dados));
     });
 
-    it('Listar /herois - deve listar somente 3 registros', async () => {
+    it('Listar GET - /herois - deve listar somente 3 registros', async () => {
         const TAMANHO_LIMITE = 3;
         const result = await app.inject({
             method: "GET",
@@ -33,7 +38,7 @@ describe('Suite de testes da api heros', async function () {
         assert.ok(dados.length === TAMANHO_LIMITE);
     });
 
-    it('Listar /herois - deve filtrar um item', async () => {
+    it('Listar GET - /herois - deve filtrar um item', async () => {
         const TAMANHO_LIMITE = 3;
         const NOME = "Laterna Verde";
         const result = await app.inject({
@@ -48,7 +53,7 @@ describe('Suite de testes da api heros', async function () {
         assert.deepEqual(dados[0].nome, NOME);
     });
 
-    it('Listar /herois limite sendo inválido', async () => {
+    it('Listar GET - /herois limite sendo inválido', async () => {
         const TAMANHO_LIMITE = "OPA";
         const result = await app.inject({
             method: "GET",
@@ -67,5 +72,20 @@ describe('Suite de testes da api heros', async function () {
 
        assert.deepEqual(result.statusCode, 400);
        assert.deepEqual(result.payload, JSON.stringify(errorResult))
+    });
+
+    it('Cadastrar POST - /herois', async () => {
+        const result = await app.inject({
+            method: "POST",
+            url: `/herois`,
+            payload: MOCK_CADASTRAR
+        });
+
+        const statusCode = result.statusCode;
+        const { message, _id } = JSON.parse(result.payload);
+        
+        assert.ok(statusCode === 200);
+        assert.notStrictEqual(_id, undefined);
+        assert.deepEqual(message, "Heroi cadastrado com sucesso!");
     });
 });

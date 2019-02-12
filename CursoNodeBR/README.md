@@ -100,8 +100,8 @@
   - :white_check_mark:[Aula 4 - Criando estrutura para criação de APIs com Hapi.js]()
   - :white_check_mark:[Aula 5 - Entendendo o padrão RestFull para desenvolvimento de APIs]()
   - :white_check_mark:[Aula 6 - Listando Heróis - GET]()
-  - [Aula 7 - Listando Herois - Validando requisições com Joi]()
-  - [Aula 8 - Cadastrando Heróis - POST]()
+  - :white_check_mark:[Aula 7 - Listando Herois - Validando requisições com Joi]()
+  - :white_check_mark:[Aula 8 - Cadastrando Heróis - POST]()
   - [Aula 9 - Atualizando Heróis - PATCH / PUT]()
   - [Aula 10 - Removendo Heróis - DELETE]()
 
