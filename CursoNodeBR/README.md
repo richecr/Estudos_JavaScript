@@ -26,15 +26,15 @@
 
 - **Módulo 1: Sincronia de Funções Javascript**
 
-  - :white_check_mark: [Aula 1 0 Introdução ao Capitulo]()
-  - :white_check_mark: [Aula 1 - Entendendo o ciclo de vida de aplicações Javascript]()
-  - :white_check_mark: [Aula 2 - Trabalhando com Callbacks]()
-  - :white_check_mark: [Aula 3 - Introdução a Promises]()
-  - :white_check_mark: [Aula 4 - Refatorando Callbacks para Promises]()
-  - :white_check_mark: [Aula 5 - Introdução a resolução de Promises com async/await]()
-  - :white_check_mark: [Aula 6 - Resolução de promises com Async/Await]()
-  - :white_check_mark: [Aula 7 - Introdução à manipulação de eventos com EventEmiter]()
-  - :white_check_mark: [Aula 8 - Trabalhando com Eventos com a classe EventEmitter]()
+  - :white_check_mark: [Aula 1 - Introdução ao Capitulo]()
+  - :white_check_mark: [Aula 2 - Entendendo o ciclo de vida de aplicações Javascript]()
+  - :white_check_mark: [Aula 3 - Trabalhando com Callbacks]()
+  - :white_check_mark: [Aula 4 - Introdução a Promises]()
+  - :white_check_mark: [Aula 5 - Refatorando Callbacks para Promises]()
+  - :white_check_mark: [Aula 6 - Introdução a resolução de Promises com async/await]()
+  - :white_check_mark: [Aula 7 - Resolução de promises com Async/Await]()
+  - :white_check_mark: [Aula 8 - Introdução à manipulação de eventos com EventEmiter]()
+  - :white_check_mark: [Aula 9 - Trabalhando com Eventos com a classe EventEmitter]()
 
 - **Módulo 2: Manipulação de Listas**
 
@@ -117,6 +117,6 @@
   - [Aula 1 - ]()
   
 * **Módulo 13: Próximos passos**
-  - [Aula 12.1 - ]()
+  - [Aula 1 - ]()
 
 **Documentação em Desenvolvimento**
