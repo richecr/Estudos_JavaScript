@@ -107,7 +107,8 @@
 
 * **Módulo 10: Documentação de Serviços com Swagger**
 
-  - [Aula 1 - ]()
+  - :white_check_mark:[Aula 1 - Introdução ao capítulo]()
+  - [Aula 2 - ]()
 
 * **Módulo 11: Autenticação com Json Web Token**
 

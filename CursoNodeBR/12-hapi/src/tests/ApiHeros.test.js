@@ -54,7 +54,7 @@ describe('Suite de testes da api heros', async function () {
 
     it('Listar GET - /herois - deve filtrar um item', async () => {
         const TAMANHO_LIMITE = 3;
-        const NOME = "Laterna Verde";
+        const NOME = MOCK_ATUALIZAR.nome
         const result = await app.inject({
             method: "GET",
             url: `/herois?skip=0&limit=${TAMANHO_LIMITE}&nome=${NOME}`
