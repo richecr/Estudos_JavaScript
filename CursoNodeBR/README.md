@@ -115,7 +115,7 @@
   - :white_check_mark:[Aula 1 - Introdução ao capítulo]()
   - :white_check_mark:[Aula 2 - Como funciona o Json Web Token?]()
   - :white_check_mark:[Aula 3 - Configurando o JWT - plugins, testes e rota de login]()
-  - [Aula 4 - ]()
+  - :white_check_mark:[Aula 4 - Criando o modulo de autenticação de usuarios e hash de senha com bcrypt]()
 
 * **Módulo 12: Publicação de serviços na Web**
   - [Aula 1 - ]()
