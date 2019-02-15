@@ -14,7 +14,10 @@ const Context  = require('./db/strategies/base/ContextStrategy');
 const Mongo = require('./db/strategies/mongodb/Mongo');
 const HeroisSchema = require('./db/strategies/mongodb/Schemas/HeroisSchema');
 
-// Routas.
+const Postgres = require('./db/strategies/postgres/Postgres');
+const UserSchema = require('./db/strategies/postgres/Schema/UserSchema');
+
+// Rotas.
 const HeroRoute = require('./routes/HeroRoute');
 const AuthRoute = require('./routes/AuthRoute');
 
@@ -31,9 +34,15 @@ function mapRoutes(instance, methods) {
 }
 
 async function main() {
+    // MongoDB
     const connection = Mongo.connect();
     const context = new Context(new Mongo(connection, HeroisSchema));
     
+    // PostGres
+    const connectionPost = await Postgres.connect();
+    const model = await Postgres.defineModel(connectionPost, UserSchema);
+    const contextPostGres = new Context(new Postgres(connectionPost, model));
+
     // Para a documentação da API.
     const swaggerOptions = {
         info: {
@@ -57,7 +66,17 @@ async function main() {
         // options: {
         //     expiresIn: 20,
         // }
-        validate: (dado, request) => {
+        validate: async (dado, request) => {
+            // Verifica se o usuario esta cadastrado no banco.
+            const [result] = await contextPostGres.read({
+                username: dado.username.toLowerCase()
+            });
+            if (!result) {
+                return {
+                    isValid: false
+                }
+            }
+
             // verifica no banco se usuário ta ativo.
             // verifica no banco se usuário continua pagando.
             return {
@@ -71,7 +90,7 @@ async function main() {
     '[list(), create(), update(), delete()] => O mapRoutes, mas iria ficar um array dentro de outro, por isso a destruturação.'
     app.route([
         ...mapRoutes(new HeroRoute(context), HeroRoute.methods()),
-        ...mapRoutes(new AuthRoute(JWT_SECRET), AuthRoute.methods())
+        ...mapRoutes(new AuthRoute(JWT_SECRET, contextPostGres), AuthRoute.methods())
     ]);
 
     await app.start();

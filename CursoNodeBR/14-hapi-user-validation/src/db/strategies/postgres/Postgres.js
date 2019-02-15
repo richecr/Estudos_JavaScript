@@ -53,8 +53,10 @@ class PostGres extends ICrud {
         return this._schema.findAll({ where: query, raw: true });
     }
 
-    update(id, novoItem) {
-        return this._schema.update(novoItem, { where: {id: id}} );
+    async update(id, novoItem, upsert=false) {
+        const fn = upsert ? 'upsert' : 'update';
+
+        return this._schema[fn](novoItem, { where: {id: id}} );
     }
 
     async delete(id) {
