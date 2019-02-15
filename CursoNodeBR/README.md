@@ -121,7 +121,7 @@
   - :white_check_mark:[Aula 1 - Introdução ao Capítulo]()
   - :white_check_mark:[Aula 2 - Trabalhando com multi-environments (development, production)]()
   - :white_check_mark:[Aula 3 - MongoDB online e gratuito com Mongo Lab]()
-  - [Aula 4 - Publicação de nossos serviços e bancos de dados gratuitos com Heroku]()
+  - :white_check_mark:[Aula 4 - Publicação de nossos serviços e bancos de dados gratuitos com Heroku]()
   - [Aula 5 - Trabalhando com PM2 para gerência de apps]()
   - [Aula 6 - Expondo cobertura de código com istanbul]()
   
