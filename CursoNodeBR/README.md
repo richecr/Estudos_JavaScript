@@ -118,9 +118,14 @@
   - :white_check_mark:[Aula 4 - Criando o modulo de autenticação de usuarios e hash de senha com bcrypt]()
 
 * **Módulo 12: Publicação de serviços na Web**
-  - [Aula 1 - ]()
+  - [Aula 1 - Introdução ao Capítulo]()
+  - [Aula 2 - Trabalhando com multi-environments (development, production)]()
+  - [Aula 3 - MongoDB online e gratuito com Mongo Lab]()
+  - [Aula 4 - Publicação de nossos serviços e bancos de dados gratuitos com Heroku]()
+  - [Aula 5 - Trabalhando com PM2 para gerência de apps]()
+  - [Aula 6 - Expondo cobertura de código com istanbul]()
   
 * **Módulo 13: Próximos passos**
-  - [Aula 1 - ]()
+  - [Aula 1 - Próximos passos]()
 
 **Documentação em Desenvolvimento**
