@@ -1,5 +1,5 @@
 # Cursos_JavaScript
-**Repositório dos cursos de JavaScript**
+> Repositório dos cursos de JavaScript, NodeJS, React e ReactNative
 
 -------
 
