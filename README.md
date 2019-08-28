@@ -5,8 +5,6 @@
 
 ## Cursos
 
--------
-
 * ### Cursos de JavaScript
 
 |   | Repositório          |  Link  |
