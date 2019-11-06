@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "hapi": "^18.1.0",
-    "mongoose": "^5.7.5",
+    "mongoose": "^5.7.8",
     "pg": "^7.8.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.42.0"
