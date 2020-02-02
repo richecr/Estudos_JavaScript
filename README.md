@@ -1,5 +1,5 @@
-# Cursos_JavaScript
-> Repositório dos cursos de JavaScript, NodeJS, React e ReactNative
+# Estudos JavaScript
+> Repositório para estudos sobre JavaScript, NodeJS, React e ReactNative, entre outras tecnologias dentro delas.
 
 -------
 
